@@ -1,172 +1,273 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Inter";
+    font-family: "Inter", sans-serif;
 }
 
 body {
-    background-color: #8BA4D0;
-}
-
-.container {
-    color: #ffffff;
-    background-color: #41649F;
-    max-width: 600px;
-    text-align: center;
-    padding: 20px;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
-    margin: 20px auto;
-    margin-top: 40px;
-    border-radius: 5px;
-}
-
-form {
+    background: #d9e9ff;
+    /* soft sky blue */
+    min-height: 100vh;
     display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
+    flex-direction: column;
+}
+
+/* MAIN CARD */
+.container {
+    width: 100%;
+    max-width: 650px;
+    background: #ffffff;
+    padding: 35px 25px;
+    border-radius: 18px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+    text-align: center;
+    animation: fadeIn 0.6s ease-in-out;
+    border: 1px solid #e5eeff;
+    margin: 40px auto;
+}
+
+.app-title {
+    font-size: 34px;
+    font-weight: 900;
+    color: #2b4b76;
+    margin-bottom: 10px;
+}
+
+/* FORM */
+form {
+    margin-top: 26px;
+    display: flex;
+    gap: 12px;
     flex-wrap: wrap;
 }
 
-form input[type="text"] {
-    padding: 10px;
-    font-size: 18px;
-    width: 70%;
-    border: none;
+#city-name {
+    flex: 1;
+    padding: 12px 16px;
+    font-size: 17px;
+    border: 1.5px solid #bcd3f6;
+    border-radius: 10px;
     outline: none;
-    border-radius: 5px;
-    color: #3B5B91;
-    font-weight: 500;
+    background: #f7faff;
+    transition: 0.2s ease;
 }
 
-form input[type="submit"] {
-    padding: 10px 20px;
+#city-name:focus {
+    border-color: #6fa8ff;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(110, 160, 255, 0.2);
+}
+
+form button {
+    padding: 12px 25px;
     border: none;
-    background-color: #9AB0D6;
+    background: #6fa8ff;
     color: #ffffff;
-    border-radius: 5px;
-    font-size: 18px;
-    transition: all 0.2s ease-in;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
 }
 
-form input[type="submit"]:hover {
-    background-color: #b31706;
-    cursor: pointer;
+form button:hover {
+    background: #518ee0;
+    transform: translateY(-2px);
+}
+
+/* LOADER */
+.loader {
+    width: 40px;
+    height: 40px;
+    margin: 20px auto;
+    border: 4px solid #aac8f6;
+    border-top-color: #3f6fd1;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+/* ERROR */
+.error-msg {
+    margin-top: 12px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #d62828;
+    display: none;
+}
+
+/* WEATHER CARD */
+.weather-card {
+    margin-top: 28px;
+    animation: fadeIn 0.4s ease-in;
 }
 
 .icon img {
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
+    margin-bottom: 15px;
 }
 
 .temp {
-    font-size: 40px;
-    font-weight: 1000;
-    margin-top: 10px;
+    font-size: 52px;
+    font-weight: 900;
+    color: #2b4b76;
 }
 
 .desc {
-    font-size: 30px;
-    font-weight: 700;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    font-size: 23px;
+    font-weight: 600;
+    margin: 10px 0 18px;
+    color: #52739c;
+    text-transform: capitalize;
 }
 
+/* DETAILS */
 .details {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 15px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
-.details>div {
-    background-color: #ffffff;
-    font-size: 18px;
-    padding: 20px;
-    margin: 10px;
-    border-radius: 5px;
-    min-height: 40px;
-    text-align: center;
-    flex: 1;
-    color: #400363;
+.details div {
+    background: #f1f6ff;
+    color: #2b4b76;
     font-weight: 600;
+    padding: 16px 20px;
+    border-radius: 12px;
+    min-width: 140px;
+    text-align: center;
+    border: 1px solid #cfe0ff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    transition: 0.2s ease;
 }
 
+.details div:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.1);
+}
 
+/* FOOTER (Sticky, Responsive) */
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 18px 0;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #1c2e42;
+    background: #bcd3f6;
+    border-top: 1px solid #a9c4eb;
+    margin-top: auto;
+    /* Pushes footer to bottom */
+}
 
-/* ---------------------------
-   RESPONSIVE DESIGN
-   --------------------------- */
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
 
-/* Tablets & small laptops */
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.visually-hidden {
+    position: absolute;
+    left: -10000px;
+}
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
     .container {
-        max-width: 90%;
-        padding: 15px;
-    }
-
-    form input[type="text"] {
-        width: 65%;
-        font-size: 16px;
-    }
-
-    form input[type="submit"] {
-        font-size: 16px;
-        padding: 10px 16px;
+        padding: 28px 18px;
+        margin: 25px auto;
     }
 
     .temp {
-        font-size: 32px;
+        font-size: 45px;
     }
 
     .desc {
-        font-size: 24px;
+        font-size: 20px;
     }
 
-    .details>div {
-        font-size: 16px;
-        padding: 15px;
+    .details div {
+        min-width: 120px;
+        padding: 14px 16px;
     }
 }
 
-/* Mobile phones */
 @media (max-width: 480px) {
     form {
         flex-direction: column;
         gap: 10px;
     }
 
-    form input[type="text"] {
+    form button {
         width: 100%;
-        font-size: 16px;
     }
 
-    form input[type="submit"] {
+    #city-name {
         width: 100%;
-        font-size: 16px;
-        padding: 10px;
-    }
-
-    .icon img {
-        width: 80px;
-        height: 80px;
     }
 
     .temp {
-        font-size: 30px;
+        font-size: 40px;
     }
 
-    .desc {
-        font-size: 22px;
-    }
-
-    .details>div {
+    .details div {
         width: 100%;
-        font-size: 16px;
-        padding: 12px;
-        margin: 8px 5px;
+    }
+}
+
+
+/* MOBILE FULL HEIGHT FIX */
+@media (max-width: 580px) {
+
+    body {
+        padding: 0;
+        /* remove top padding */
+    }
+
+    .container {
+        margin: 0;
+        border-radius: 0;
+        min-height: calc(100vh - 60px);
+        /* FULL HEIGHT minus footer */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 25px 18px;
+    }
+
+    .weather-card {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .footer {
+        position: relative;
+        padding: 18px 0;
+        height: 60px;
+        /* MUST MATCH HEIGHT ABOVE */
     }
 }

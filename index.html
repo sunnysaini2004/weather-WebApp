@@ -1,56 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather WebApp</title>
-    <link rel="stylesheet" href="files/style.css">
+
+    <link rel="stylesheet" href="files/style.css" />
 </head>
 
 <body>
-    <div class="container">
-        <h1>Weather WebApp</h1>
 
+    <main class="container">
+        <h1 class="app-title">Weather WebApp</h1>
 
-        <form action="#submit">
-
-            <input type="text" id="city-name" placeholder="Enter Your City Name">
-
-            <input type="submit" value="Get Weather">
+        <form id="weather-form">
+            <label for="city-name" class="visually-hidden">City Name</label>
+            <input 
+                type="text"
+                id="city-name"
+                placeholder="Enter your city name..."
+                autocomplete="off"
+            />
+            <button type="submit">Get Weather</button>
         </form>
 
-        <div class="weather-data">
+        <!-- Loader -->
+        <div class="loader hidden" id="loader"></div>
 
-            <div class="icon">
-                <!-- <img src="https://openweathermap.org/img/wn/01d.png" alt=""> -->
-            </div>
+        <!-- Error Message -->
+        <p class="error-msg" id="error-msg"></p>
 
+        <!-- Weather Output -->
+        <section class="weather-card hidden" id="weather-card">
+            <div class="icon" id="weather-icon"></div>
 
-            <div class="temp"></div>
-            <div class="desc"></div>
+            <p class="temp" id="temp"></p>
+            <p class="desc" id="desc"></p>
 
+            <div class="details" id="details"></div>
+        </section>
+    </main>
 
-            <div class="details">
-
-                <div></div>
-                <div></div>
-                <div></div>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-
-
-
-
+    <footer class="footer">
+        DESIGNED BY SUNNY SAINI
+    </footer>
 
     <script src="files/script.js"></script>
 </body>
-
 </html>
